@@ -11,6 +11,8 @@
     --special-color: #2196F3;
     --social-icon-color: #AFB1B8;
     --footer-social-icon-color: #2F303A;
+    --portfolio-overlay-bg-color: rgba(33, 150, 243, 0.9);
+    --backdrop-bg-color: rgba(0, 0, 0, 0.2);
 }
 
 body {
@@ -115,10 +117,10 @@ html {
     color: var(--fst-text-color);
     text-decoration: none;
     display: block;
-    /* padding: 10px 0px 10px; */
-
+    padding: 32px 4px 32px;
+/* 
     padding-top: 32px;
-    padding-bottom: 32px;
+    padding-bottom: 32px; */
     position: relative;
 }   
 
@@ -153,8 +155,6 @@ html {
     display: flex;
     align-items: center;
     list-style: none;
-    /* padding: 32px 0; */
-
 }
 
 .header-nav {
@@ -164,9 +164,6 @@ html {
     /* align-items: center; */
     /* justify-content: space-between; */
 }
-/* .item {
-    display: list-item;
-} */
 
 .site-nav .site-nav-links:hover,
 .site-nav .site-nav-links:focus,
@@ -329,9 +326,9 @@ html {
     margin-top: 0;
     margin-bottom: 30px;
 }
-.main-button {
+.order-button {
     display: inline-block;
-    background: var(--special-color);
+    background-color: var(--special-color);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
     border: 1px solid transparent;
@@ -346,13 +343,23 @@ html {
     padding: 10px 26px;
     align-items: center;
     cursor: pointer;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+                color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.button {
+.order-button:hover,
+.order-button:focus {
+    background-color: #188CE8;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+}
+
+/* .button {
     display: contents;
     font-family: inherit;
     border: none;
     cursor: pointer;
-}
+} */
 
 /* --- Main privileges --- */
 
@@ -392,13 +399,6 @@ html {
     line-height: 1.71;
     letter-spacing: 0.03em;
     color: var(--snd-text-color);
-}
-
-.main-button:hover,
-.main-button:focus {
-    background-color: #188CE8;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-    border-radius: 4px;
 }
 
 /* --- What do we do? section --- */
@@ -576,7 +576,7 @@ html {
 
 /* ----- Стилі для portfolio.html ----- */
 
-.hidden-tittle {
+.all-hidden-tittle {
     position: absolute;
     white-space: nowrap;
     width: 1px;
@@ -588,31 +588,29 @@ html {
     clip-path: inset(50%);
     margin: -1px;
 }
-.prtfl-filters {
+.portfolio-filters {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 50px;
     justify-content: center;
 }
-.prtfl-blocks {
+.portfolio-lists {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     margin: -15px;
 }
 
-.prtfl-button {
+.portfolio-button {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     font-size: 16px;
     line-height: 1.85;
     text-align: center;
-    /* height: 38px; */
     width: max-content;
     border-radius: 4px;
     border-style: none;
-    background: var(--bgc-team);
-    /* box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12); */
+    background-color: var(--bgc-team);
     cursor: pointer;
     border: none;
     padding: 6px 22px;
@@ -621,90 +619,57 @@ html {
                 box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.prtfl-button:hover,
-.prtfl-button:focus {
+.portfolio-button:hover,
+.portfolio-button:focus {
     background: var(--special-color);
     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
     border-radius: 4px;
     color: #FFFFFF;
 }
 
-.prtfl-cards {
+.portfolio-cards {
     width: 370px;
-    background: #FFFFFF;
-    /* border: 1px solid #EEEEEE; */
+    background-color: #FFFFFF;
     margin: 15px;
-    /* margin-top: 30px;
-    padding-right: 30px; */
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.prtfl-card-tumbs {
+.portfolio-overlay-item {
     position: relative;
-    width: 370px;
     overflow: hidden;
 }
-.prtfl-card-tumbs::before {
-    display: inline-block;
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: rgba(33, 150, 243, 0.9);
-    /* opacity: 0; */
-    opacity: 1;
-    pointer-events: none;
-    transform: translateY(100%);
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.prtfl-link {
+
+.portfolio-link {
     position: relative;
     display: block;
     text-decoration: none;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+            background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+            box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.prtfl-link::after {
-    display: inline-block;
-    content: '';
+
+.portfolio-overlay-text {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    left: 0;
-    top: 0;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
-    opacity: 0;
-    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.prtfl-link:hover::after,
-.prtfl-link:focus::after {
-    opacity: 1;
-}
-.prtfl-overlay-text {
-    position: absolute;
-    top: 63px;
-    left: 24px;
-    bottom: 63px;
-    right: 24px;
+    padding: 63px 24px;
     font-size: 18px;
     line-height: 1.56;
     color: var(--bgc-header);
-    transform: translateY(140%);
+    transform: translateY(100%);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: var(--portfolio-overlay-bg-color);
 }
 
-.prtfl-link:hover,
-.prtfl-link:focus {
+.portfolio-link:hover,
+.portfolio-link:focus {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
-.prtfl-link:hover .prtfl-card-tumbs::before,
-.prtfl-link:focus .prtfl-card-tumbs::before {
-    transform: translateY(0);
-}
-.prtfl-card:hover .prtfl-overlay-text,
-.prtfl-link:focus .prtfl-overlay-text {
+.portfolio-link:hover .portfolio-overlay-text,
+.portfolio-link:focus .portfolio-overlay-text {
     transform: translateY(0);
 }
 
@@ -712,11 +677,11 @@ html {
     padding-top: 94px;
     padding-bottom: 94px;
 }
-.prtfl-filters .botton-list:not(:last-child) {
+.portfolio-filters .botton-list:not(:last-child) {
     margin-right: 8px;
 }
 
-.prtfl-description {
+.portfolio-description {
     padding: 20px 24px;
     width: 370px;
     border-right: 1px solid #EEEEEE;
@@ -724,7 +689,7 @@ html {
     border-left: 1px solid #EEEEEE;
 }
 
-.prtfl-case-tittle {
+.portfolio-case-tittle {
     font-weight: 700;
     font-size: 18px;
     line-height: 2;
@@ -733,7 +698,7 @@ html {
     color: var(--fst-text-color);
 }
 
-.prtfl-case-disc {
+.portfolio-case-disc {
     font-size: 16px;
     line-height: 1.88;
     letter-spacing: 0.03em;
@@ -749,8 +714,10 @@ html {
     height: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: var(--backdrop-bg-color);
     transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+                background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+                transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is-hidden {
@@ -762,8 +729,6 @@ html {
     transform: translate(-50%, -50%) scale(0.5, 0.5);
 }
 
-
-
 .modal {
     position: absolute;
 
@@ -773,13 +738,15 @@ html {
     left: 50%;
     top: 50%;
     
+    transform: translate(-50%, -50%) scale(1, 1);
+
     border-radius: 4px;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
 
-    transform: translate(-50%, -50%) scale(1, 1);
-
     background-color: var(--bgc-header);
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
 .close-modal {
@@ -787,7 +754,6 @@ html {
 
     top: 8px;
     right: 8px;
-    
     width: 30px;
     height: 30px;
     padding: 6px;
@@ -797,7 +763,8 @@ html {
     fill: #000000;
 
     visibility: visible;
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+                padding 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .close-modal:hover {
     padding: 3px;
